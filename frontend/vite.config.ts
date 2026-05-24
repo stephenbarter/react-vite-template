@@ -1,10 +1,18 @@
-/// <reference types="vitest" />
+import { fileURLToPath, URL } from "node:url";
+
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+// vitest/config re-exports Vite's defineConfig with test types merged in
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
 	plugins: [react(), tailwindcss()],
+	resolve: {
+		alias: {
+			// `@/components/Foo` → `src/components/Foo`
+			"@": fileURLToPath(new URL("./src", import.meta.url)),
+		},
+	},
 	test: {
 		environment: "jsdom",
 		globals: true,
