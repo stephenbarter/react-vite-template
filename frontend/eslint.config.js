@@ -7,6 +7,7 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import importX from "eslint-plugin-import-x";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import unicorn from "eslint-plugin-unicorn";
+import vitest from "eslint-plugin-vitest";
 
 export default tseslint.config(
 	// [0] Global ignores
@@ -133,6 +134,20 @@ export default tseslint.config(
 			"unicorn/prefer-query-selector": "error",
 			"unicorn/no-useless-undefined": "error",
 			"unicorn/prefer-logical-operator-over-ternary": "warn",
+		},
+	},
+
+	// [8] Vitest — test-file-only rules; globals injected so no import needed
+	{
+		files: ["src/**/*.{test,spec}.{ts,tsx}", "src/test/**/*.{ts,tsx}"],
+		plugins: { vitest },
+		rules: {
+			...vitest.configs.recommended.rules,
+		},
+		languageOptions: {
+			globals: {
+				...vitest.environments.env.globals,
+			},
 		},
 	},
 );
