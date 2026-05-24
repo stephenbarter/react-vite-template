@@ -1,8 +1,12 @@
 # react-vite-template
 
-Lean React frontend template — Vite, TypeScript, Tailwind CSS v4, ESLint v9, Prettier.
+Lean React frontend template — Vite, TypeScript, Tailwind CSS v4, ESLint v9, Prettier, Vitest.
 
 No backend assumptions. Use with any API or as a standalone frontend.
+
+## Requirements
+
+- **Node >= 24** — required by Vitest 4.x + rolldown. Use [fnm](https://github.com/Schniz/fnm) to manage versions.
 
 ## Getting Started
 
@@ -21,8 +25,9 @@ npm run dev
 - **Vite 5** — dev server + bundler
 - **TypeScript** — strict mode enabled
 - **Tailwind CSS v4** — configured via `@tailwindcss/vite` plugin, no config file needed
-- **ESLint v9** — strict flat config (typescript-eslint strict+stylistic, react, import-x, jsx-a11y, unicorn)
+- **ESLint v9** — strict flat config (typescript-eslint strict+stylistic, react, import-x, jsx-a11y, unicorn, vitest)
 - **Prettier 3** — double quotes, semis, tabs, pre-commit hook via Husky + lint-staged
+- **Vitest 4** — Vite-native test runner with jsdom, Testing Library, jest-dom, v8 coverage
 
 ## Editor Diagnostics
 
@@ -37,9 +42,12 @@ Red squiggles in `.tsx` files come from three distinct layers — hover to ident
 ## Scripts
 
 ```bash
-npm run dev      # start dev server at localhost:5173
-npm run build    # type-check + production build
-npm run lint     # run ESLint
-npm run format   # format all files with Prettier
-npm run preview  # preview production build
+npm run dev           # start dev server at localhost:5173
+npm run build         # type-check + production build
+npm run lint          # run ESLint
+npm run format        # format all files with Prettier
+npm run preview       # preview production build
+npm run test          # run Vitest in watch mode
+npm run test:run      # run tests once (CI-friendly)
+npm run test:coverage # run tests with v8 coverage report
 ```
