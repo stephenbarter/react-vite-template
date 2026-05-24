@@ -14,7 +14,9 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
-		"noUncheckedSideEffectImports": true
+		"noUncheckedSideEffectImports": true,
+		// Provides node:url, node:path etc. for vite.config.ts
+		"types": ["node"]
 	},
 	"include": ["vite.config.ts"]
 }
