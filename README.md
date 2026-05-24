@@ -22,7 +22,7 @@ npm run dev
 ## Stack
 
 - **React 19** — UI
-- **Vite 5** — dev server + bundler
+- **Vite 8** — dev server + bundler (rolldown/OXC pipeline — no Babel)
 - **TypeScript** — strict mode enabled
 - **Tailwind CSS v4** — configured via `@tailwindcss/vite` plugin, no config file needed
 - **ESLint v9** — strict flat config (typescript-eslint strict+stylistic, react, import-x, jsx-a11y, unicorn, vitest)
