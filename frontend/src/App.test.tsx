@@ -1,17 +1,17 @@
 import { render, screen } from "@testing-library/react";
 
-import App from "./App";
+import { HomePage } from "@/pages/home";
 
-describe("App", () => {
+describe("HomePage", () => {
 	it("renders the hello world heading", () => {
-		render(<App />);
+		render(<HomePage />);
 		expect(
 			screen.getByRole("heading", { name: /hello world/i }),
 		).toBeInTheDocument();
 	});
 
 	it("renders the subtitle text", () => {
-		render(<App />);
+		render(<HomePage />);
 		expect(screen.getByText(/your app starts here/i)).toBeInTheDocument();
 	});
 });
