@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import pluginQuery from "@tanstack/eslint-plugin-query";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
@@ -159,4 +160,7 @@ export default tseslint.config(
 			},
 		},
 	},
+
+	// [9] TanStack Query — exhaustive query keys, stable client, no rest destructuring
+	...pluginQuery.configs["flat/recommended"],
 );
