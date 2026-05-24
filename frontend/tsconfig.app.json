@@ -18,7 +18,12 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true,
 		// Vitest global types (describe, it, expect, etc.) — pairs with globals: true in vite.config.ts
-		"types": ["vitest/globals"]
+		"types": ["vitest/globals"],
+		// Path alias — must match resolve.alias in vite.config.ts
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		}
 	},
 	"include": ["src"]
 }
