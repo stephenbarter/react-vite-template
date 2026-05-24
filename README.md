@@ -46,17 +46,41 @@ src/
 └── index.css
 ```
 
-## CI
+## GitHub Actions CI
 
-The workflow at `.github/workflows/ci.yml` runs automatically on every PR and push to `master`.
+The workflow at `.github/workflows/ci.yml` runs lint, build, and tests automatically on every PR and push to `master`.
 
-**To disable:** replace the `on:` block with `on: workflow_dispatch` — CI stops running automatically but stays available for manual runs.
+### Disable CI
 
-**To make CI required (block merging until green):**
-1. Go to your repo on GitHub → Settings → Branches
-2. Add a branch ruleset for `master`
-3. Under "Require status checks to pass" add `ci / lint-build-test`
-4. Save — the merge button is now blocked until CI passes
+Open `.github/workflows/ci.yml` and replace the `on:` block with:
+
+```yaml
+on: workflow_dispatch
+```
+
+CI stops running automatically but stays available for manual runs in the Actions tab.
+
+### Make CI required (block merging until green)
+
+GitHub runs the workflow automatically, but does not block merging by default.
+To enforce it:
+
+**Step 1 — Let CI run once first.**
+The status check name only becomes selectable in settings after it has run at least once.
+Push a branch, open a PR, and wait for the workflow to finish (pass or fail — it just needs to have run).
+
+**Step 2 — Add a branch ruleset.**
+1. Go to your repo on GitHub → **Settings** → **Rules** → **Rulesets**
+2. Click **New ruleset** → **New branch ruleset**
+3. Set a name (e.g. `main protection`) and set **Enforcement status** to `Active`
+4. Under **Target branches** → Add target → **Default branch**
+5. Enable **Require status checks to pass**
+6. Click **Add checks** → search for `lint-build-test` → select it
+7. Click **Create**
+
+The merge button on any PR now stays grey until CI is green.
+
+> **Tip:** To also block direct pushes to `master`, enable **Require a pull request before merging** in the same ruleset.
 
 ## Editor Diagnostics
 
