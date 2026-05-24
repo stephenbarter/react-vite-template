@@ -28,6 +28,7 @@ npm run dev
 - **ESLint v9** — strict flat config (typescript-eslint strict+stylistic, react, import-x, jsx-a11y, unicorn, vitest)
 - **Prettier 3** — double quotes, semis, tabs, pre-commit hook via Husky + lint-staged
 - **Vitest 4** — Vite-native test runner with jsdom, Testing Library, jest-dom, v8 coverage
+- **Path alias** — `@/` resolves to `src/` across Vite, TypeScript, and ESLint
 
 ## Editor Diagnostics
 
