@@ -8,9 +8,9 @@ A modern React starter built with **Vite**, **TypeScript**, and **Tailwind CSS v
 
 | Tool                                         | Version | Purpose                     |
 | -------------------------------------------- | ------- | --------------------------- |
-| [React](https://react.dev)                   | 18.3    | UI component library        |
+| [React](https://react.dev)                   | 19.2    | UI component library        |
 | [TypeScript](https://www.typescriptlang.org) | 5.5     | Static typing               |
-| [Vite](https://vitejs.dev)                   | 5.4     | Dev server & build tool     |
+| [Vite](https://vitejs.dev)                   | 8.0     | Dev server & build tool     |
 | [Tailwind CSS](https://tailwindcss.com)      | 4.0     | Utility-first CSS framework |
 | [ESLint](https://eslint.org)                 | 9.9     | Linting (flat config)       |
 
@@ -20,7 +20,7 @@ A modern React starter built with **Vite**, **TypeScript**, and **Tailwind CSS v
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) v18 or later
+- [Node.js](https://nodejs.org) v24 or later (required by Vite 8 + Vitest 4)
 - npm, yarn, or pnpm
 
 ### Install & Run
@@ -55,7 +55,7 @@ The app will be available at **http://localhost:5173** by default.
 - Near-instant cold starts and sub-millisecond HMR via native ESM
 - Single config file: [`vite.config.ts`](vite.config.ts)
 - Plugins used:
-  - `@vitejs/plugin-react` — Babel-based React Fast Refresh
+  - `@vitejs/plugin-react` — React Fast Refresh via Vite 8's built-in OXC transformer
   - `@tailwindcss/vite` — Tailwind v4 Vite-native integration
 
 ### 🎨 Tailwind CSS v4
@@ -104,7 +104,7 @@ ESLint v9 uses the new **flat config** format (`eslint.config.js` — no `.eslin
 
 ### 🔄 React Fast Refresh
 
-Changes to React components are reflected instantly in the browser **without losing component state**, powered by `@vitejs/plugin-react` and Babel's Fast Refresh transform.
+Changes to React components are reflected instantly in the browser **without losing component state**, powered by `@vitejs/plugin-react` and Vite 8's native OXC transform (no Babel overhead).
 
 ---
 
