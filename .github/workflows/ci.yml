@@ -1,0 +1,51 @@
+# CI — runs lint, build, and tests on every PR and push to master.
+#
+# TO DISABLE: comment out the `on:` block below and replace with:
+#   on: workflow_dispatch
+# That keeps the file in place but stops it running automatically.
+# You can re-enable at any time by restoring the original `on:` block.
+#
+# TO MAKE CI REQUIRED (block merging until green):
+#   1. Go to your repo on GitHub → Settings → Branches
+#   2. Click "Add branch ruleset" (or edit an existing one for `master`)
+#   3. Under "Require status checks to pass", add "ci / lint-build-test"
+#   4. Save — the merge button is now blocked until this workflow passes
+#
+# Without step 4 above, CI runs and reports pass/fail but does not
+# block merging. Both modes are useful — advisory CI is still visible
+# on every PR.
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  lint-build-test:
+    name: Lint, Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Lint
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Build
+        working-directory: frontend
+        run: npm run build
+
+      - name: Test
+        working-directory: frontend
+        run: npm run test:run
