@@ -103,6 +103,15 @@ export default tseslint.config(
 						"sibling",
 						"index",
 					],
+					// Treat `@/` aliases as internal so they sort after external packages
+					pathGroups: [
+						{
+							pattern: "@/**",
+							group: "internal",
+							position: "after",
+						},
+					],
+					pathGroupsExcludedImportTypes: ["builtin", "external"],
 					"newlines-between": "always",
 					alphabetize: { order: "asc", caseInsensitive: true },
 				},
