@@ -1,0 +1,2 @@
+# 'frontend' is the conventional name for the frontend directory in this template
+cd frontend && npx lint-staged
